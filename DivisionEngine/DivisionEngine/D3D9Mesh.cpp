@@ -51,11 +51,11 @@ namespace Division
 		std::map<std::string, Resource*>::const_iterator textureIterator;
 		std::map<std::string, Resource*>::const_iterator textureEnd;
 
-		if (customTextures.size() == 0) {
+		if (customTextures.size() == 0) {   //Saved textures
 			textureIterator = textures_.begin();
 			textureEnd = textures_.end();
 		}
-		else {
+		else {  // Costume textures
 			textureIterator = customTextures.begin();
 			textureEnd = customTextures.end();
 		}
@@ -63,14 +63,14 @@ namespace Division
 
 		for (DWORD i = 0; i < numberOfMaterials_; i++) {
 			if (meshMaterials_)
-				renderDevice->SetMaterial(&meshMaterials_[i]);
+				renderDevice->SetMaterial(&meshMaterials_[i]); //Sets the material properties for the device.
 
 			if (textureIterator != textureEnd) {
-				renderer->setTexture(textureIterator->second);
+				renderer->setTexture(textureIterator->second); //Assigns a texture to a stage for a device.
 				++textureIterator;
 			}
 
-			meshData_->DrawSubset(i);
+			meshData_->DrawSubset(i); //Draws a subset of a mesh and give id i.
 		}
 	}
 }
